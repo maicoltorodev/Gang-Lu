@@ -36,8 +36,27 @@ const maShanZheng = Ma_Shan_Zheng({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ganglu.site'),
   title: 'Restaurante Chino Gang Lu | Auténtica Comida China',
   description: 'El mejor arroz chino, camarón y lo mein a domicilio. Pide ahora por WhatsApp.',
+  openGraph: {
+    title: 'Restaurante Chino Gang Lu | Auténtica Comida China',
+    description: 'El mejor arroz chino, camarón y lo mein a domicilio. Pide ahora por WhatsApp.',
+    images: [
+      {
+        url: '/imagen-metadata.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Restaurante Gang Lu - Sabor Legendario',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Restaurante Chino Gang Lu',
+    description: 'Tradición y sabor legendario a domicilio.',
+    images: ['/imagen-metadata.jpg'],
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
