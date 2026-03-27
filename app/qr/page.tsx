@@ -1,7 +1,31 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Generador de Pedidos | Gang Lu Restaurante Chino',
+  description: 'Escanea nuestro código QR oficial para acceder al menú y realizar tu pedido a domicilio por WhatsApp. Auténtica comida china en Bogotá.',
+  keywords: ['Gang Lu', 'Restaurante Chino Bogotá', 'Comida China Domicilio', 'Arroz Chino', 'QR Pedidos', 'Menú Gang Lu', 'Comida Oriental'],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: 'Gang Lu - Pedidos a Domicilio',
+    description: 'Escanea nuestro código QR o toca para ver nuestro menú de auténtica comida china y hacer tu pedido por WhatsApp.',
+    url: 'https://www.ganglu.site/qr',
+    siteName: 'Gang Lu Tradición China',
+    locale: 'es_CO',
+    type: 'website',
+  },
+};
 
 export default function QRPage() {
   const qrImageSource = "/qr.png";
