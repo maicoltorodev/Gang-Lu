@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ganglu-red: #cc0000;
+  --color-ganglu-dark: #990000;
+  --color-ganglu-yellow: #ffcc00;
+  
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+  --font-chinese: var(--font-chinese);
+}
+
+@layer utilities {
+  .text-outline-white {
+    text-shadow: 
+      -2px -2px 0 #fff,  
+       2px -2px 0 #fff,
+      -2px  2px 0 #fff,
+       2px  2px 0 #fff,
+      -3px  0   0 #fff,
+       3px  0   0 #fff,
+       0   -3px 0 #fff,
+       0    3px 0 #fff;
+  }
+  
+  .text-outline-black {
+    text-shadow: 
+      -2px -2px 0 #000,  
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000;
+  }
+}
+
+/* Custom Scrollbar - 2026 Crimson Aesthetic */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050202;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #8a0000, #cc0000, #8a0000);
+    border-radius: 10px;
+    border: 2px solid #050202;
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffcc00;
+  }
+
+  /* Firefox Support */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #8a0000 #050202;
+  }
+}
