@@ -87,7 +87,6 @@ const features = [
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     if (mobileMenuOpen) document.body.style.overflow = 'hidden';
@@ -239,6 +238,7 @@ export default function LandingPage() {
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              style={{ willChange: "transform" }}
               className="absolute left-[-35%] sm:left-[-45%] md:left-[-35%] top-1/2 -translate-y-1/2 w-32 sm:w-64 md:w-64 lg:w-[380px] aspect-square z-30"
             >
               <Image src="/mascota-nino.png" alt="Niño" fill className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
@@ -247,6 +247,7 @@ export default function LandingPage() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              style={{ willChange: "transform" }}
               className="relative w-full h-full z-20"
             >
               <Image src="/arroz-camaron-nobg.png" alt="Arroz de Camarón Gang Lu" fill unoptimized className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]" priority />
@@ -255,6 +256,7 @@ export default function LandingPage() {
             <motion.div
               animate={{ y: [0, 15, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              style={{ willChange: "transform" }}
               className="absolute right-[-35%] sm:right-[-45%] md:right-[-35%] top-1/2 -translate-y-1/2 w-32 sm:w-64 md:w-64 lg:w-[380px] aspect-square z-30"
             >
               <Image src="/mascota-nina.png" alt="Niña" fill className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
@@ -277,6 +279,7 @@ export default function LandingPage() {
               className="flex whitespace-nowrap w-max"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 20, ease: "linear", repeat: Infinity }}
+              style={{ willChange: "transform" }}
             >
               {[...features, ...features].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 md:gap-4 mx-6 md:mx-12">
@@ -318,26 +321,26 @@ export default function LandingPage() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative flex flex-col h-full bg-[#990000]/40 backdrop-blur-2xl rounded-[2rem] overflow-hidden border border-white/10 hover:border-[#ffcc00]/50 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.8)]"
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
+                <div className="relative aspect-[3/2] sm:aspect-[4/3] md:aspect-[4/5] overflow-hidden">
                   <Image src={item.image} alt={item.title} fill unoptimized className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute top-6 left-6 z-20">
+                  <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20">
                     <span className="bg-[#ffcc00] text-black text-[10px] font-['var(--font-bebas)'] font-black px-4 py-1.5 rounded-full shadow-xl tracking-widest">{item.tag}</span>
                   </div>
-                  <div className="absolute top-6 right-6 z-20">
-                    <div className="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl">
-                      <span className="text-white font-['var(--font-bebas)'] font-black text-lg tracking-widest">{item.price}</span>
+                  <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
+                    <div className="bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-2xl">
+                      <span className="text-white font-['var(--font-bebas)'] font-black text-sm md:text-lg tracking-widest">{item.price}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-8 flex flex-col flex-1">
-                  <span className="text-[#ffcc00] text-[10px] font-['var(--font-bebas)'] font-bold tracking-[0.2em] uppercase mb-3 opacity-60">{item.category}</span>
-                  <h3 className="font-['var(--font-bebas)'] text-3xl text-white mb-4 group-hover:text-[#ffcc00] transition-colors leading-tight uppercase font-black">{item.title}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed mb-8 flex-1 font-medium">{item.description}</p>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola,%20quiero%20pedir%20un%20${encodeURIComponent(item.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white/5 hover:bg-[#ffcc00] text-white hover:text-black p-4 rounded-2xl transition-all group/btn border border-white/10 hover:border-[#ffcc00]">
-                    <span className="font-['var(--font-bebas)'] font-bold text-sm tracking-widest uppercase">Ordenar Ahora</span>
-                    <div className="bg-[#ffcc00] group-hover/btn:bg-black p-2 rounded-xl transition-colors">
-                      <Plus className="w-5 h-5 text-black group-hover/btn:text-[#ffcc00]" />
+                <div className="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+                  <span className="text-[#ffcc00] text-[10px] font-['var(--font-bebas)'] font-bold tracking-[0.2em] uppercase mb-2 md:mb-3 opacity-60">{item.category}</span>
+                  <h3 className="font-['var(--font-bebas)'] text-2xl md:text-3xl text-white mb-2 md:mb-4 group-hover:text-[#ffcc00] transition-colors leading-tight uppercase font-black">{item.title}</h3>
+                  <p className="text-white/60 text-xs sm:text-sm leading-relaxed mb-4 md:mb-8 flex-1 font-medium">{item.description}</p>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola,%20quiero%20pedir%20un%20${encodeURIComponent(item.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white/5 hover:bg-[#ffcc00] text-white hover:text-black p-3 md:p-4 rounded-xl md:rounded-2xl transition-all group/btn border border-white/10 hover:border-[#ffcc00]">
+                    <span className="font-['var(--font-bebas)'] font-bold text-xs md:text-sm tracking-widest uppercase">Ordenar Ahora</span>
+                    <div className="bg-[#ffcc00] group-hover/btn:bg-black p-1.5 md:p-2 rounded-lg md:rounded-xl transition-colors">
+                      <Plus className="w-4 h-4 md:w-5 md:h-5 text-black group-hover/btn:text-[#ffcc00]" />
                     </div>
                   </a>
                 </div>
@@ -354,10 +357,10 @@ export default function LandingPage() {
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative w-full lg:w-[45%] aspect-square">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#990000]/40 via-transparent to-[#ffcc00]/5 blur-[80px] rounded-full" />
               <div className="relative w-full h-full flex items-center justify-center">
-                <motion.div animate={{ y: [-20, 20, -20] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute left-0 w-[55%] aspect-square z-20">
+                <motion.div animate={{ y: [-20, 20, -20] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} style={{ willChange: "transform" }} className="absolute left-0 w-[55%] aspect-square z-20">
                   <Image src="/mascota-nino.png" alt="Niño" fill className="object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)]" />
                 </motion.div>
-                <motion.div animate={{ y: [20, -20, 20] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute right-0 w-[55%] aspect-square z-10">
+                <motion.div animate={{ y: [20, -20, 20] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }} style={{ willChange: "transform" }} className="absolute right-0 w-[55%] aspect-square z-10">
                   <Image src="/mascota-nina.png" alt="Niña" fill className="object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)] scale-x-[-1]" />
                 </motion.div>
                 <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity }} className="absolute -bottom-8 lg:-bottom-12 bg-[#ffcc00] text-black px-10 py-5 rounded-3xl font-black text-center shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30">
@@ -442,9 +445,10 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <a href="https://inzidium.com" target="_blank" rel="noopener noreferrer" className="group/credit flex flex-col items-center gap-3 py-4 px-8 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/30 transition-all duration-500">
+            <a href="https://inzidium.com" target="_blank" rel="noopener noreferrer" className="group/credit flex flex-col items-center gap-3 py-4 px-8 rounded-3xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all duration-500">
               <span className="text-[10px] text-white/30 uppercase font-black tracking-widest group-hover/credit:text-white/50 transition-colors">Desarrollado por</span>
               <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
                 <span className="font-[family-name:var(--font-orbitron)] bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent font-bold text-sm tracking-widest group-hover/credit:scale-105 transition-transform normal-case">InZidium</span>
                 <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
               </div>
